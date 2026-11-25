@@ -19,3 +19,40 @@ de consola que juegue una partida con datos fijos e imprima el desglose.
 No agregues interfaz todavía.
 
 
+prompt 2:
+Refactorizá el motor para que cumpla exactamente estos requerimientos del cliente.
+No agregues funcionalidades que no estén en esta lista.
+
+1. Caso: parámetros gravedad, absurdo y evidencia_disponible (0 a 10).
+   Eliminá Solidez y Credibilidad.
+2. Juez: parámetros formalidad, tolerancia_ironia y teatralidad (0 a 10).
+   Eliminá etiquetas favoritas/odiadas, "máximo de absurdo tolerado" y bonificaciones por etiqueta.
+3. Alegato: tiene las dimensiones formalidad, ironia y teatralidad, más un bonus de evidencia.
+   Cada carta (evidencia, ley, testigo), aplicada con Decorator, suma o resta sobre esos valores.
+   Sin combos ni efectos especiales entre cartas.
+4. Veredicto: suma ponderada en /src/config:
+   afinidad por dimensión = 10 - |valor del juez - valor del alegato|;
+   puntaje = pA*afinidades + pE*(evidencia_disponible + bonus) - pG*gravedad - penalización de historial.
+   Pesos y umbral en config.
+5. Resultado: GANADO o PERDIDO según el umbral, con una frase temática opcional.
+6. Desglose: una línea por término con su aporte, y el puntaje final debe ser exactamente
+   la suma de las líneas mostradas. Incluí una línea "penalización por historial" solo si el
+   repositorio indica que el jugador repitió un tipo de carta con ese juez.
+7. Mantené: Decorator, Observer, la inyección del repositorio y la demo de consola.
+
+Prompt 3:
+Ajustá el motor con estos cambios. No agregues nada más.
+
+1. Veredicto: sumá el término de absurdo del caso:
+   penalización_absurdo = pAb * max(0, absurdo_caso - tolerancia_ironia_juez)
+   Restalo del puntaje. pAb va en /src/config/pesos.js.
+   Agregá una línea al desglose: "Absurdo del caso vs. tolerancia del juez".
+2. Alegato: limitá formalidad, ironia y teatralidad al rango 0 a 10 después de aplicar
+   cada carta (clamp). Documentalo en un comentario.
+3. Demo: agregá una tercera partida con otra combinación de cartas y un caso grave que dé
+   PERDIDO, con el desglose completo, y mostrá su frase temática de derrota.
+4. Mantené la regla actual de penalización por historial, configurable en /src/config.
+5. El desglose debe seguir sumando exacto al puntaje final.
+
+
+

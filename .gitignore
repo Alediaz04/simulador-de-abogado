@@ -1,0 +1,21 @@
+# Dependencias pesadas
+node_modules/
+
+# Claves, variables de entorno y configuraciones sensibles (Firebase, etc.)
+.env
+.env.*
+src/data/firebaseConfig.local.js
+*serviceAccountKey*.json
+*credentials*.json
+
+# Logs y archivos temporales
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

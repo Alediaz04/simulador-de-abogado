@@ -5,5 +5,8 @@
   "type": "module",
   "scripts": {
     "demo": "node tests/demo-consola.js"
+  },
+  "dependencies": {
+    "firebase": "^13.4.0"
   }
 }
