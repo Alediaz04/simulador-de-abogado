@@ -11,7 +11,7 @@ export class HistorialMemoria extends RepositorioHistorial {
   }
 
   async guardarPartida(partida) {
-    const copia = structuredClone ? structuredClone(partida) : JSON.parse(JSON.stringify(partida));
+    const copia = JSON.parse(JSON.stringify(partida));
     this.partidas.push(copia);
   }
 

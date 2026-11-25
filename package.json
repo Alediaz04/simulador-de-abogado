@@ -4,7 +4,9 @@
   "description": "Simulador de Abogado con motor paramétrico en JS puro (ES Modules)",
   "type": "module",
   "scripts": {
-    "demo": "node tests/demo-consola.js"
+    "demo": "node tests/demo-consola.js",
+    "test": "node --test",
+    "balance": "node tests/balance.js"
   },
   "dependencies": {
     "firebase": "^13.4.0"

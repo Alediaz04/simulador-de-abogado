@@ -19,15 +19,33 @@ cd simulador-de-abogado
 npm install
 ```
 
-### 3. Configuración de Firebase (Credenciales locales)
+### 3. Configuración de Firebase para Vite (Variables de entorno)
 Por seguridad, las claves y credenciales de Firebase **no se suben a GitHub** (están excluidas en `.gitignore`).
-Para usar la persistencia en Firestore (`src/data/historialFirestore.js`):
+`src/data/firebaseClient.js` está preparado para **Vite** leyendo la configuración desde `import.meta.env.VITE_FIREBASE_*` y autenticando de forma anónima mediante `signInAnonymously`:
 
-1. Copiá el archivo de plantilla `src/data/firebaseConfig.example.js` y renombralo a `src/data/firebaseConfig.local.js`:
-   ```bash
-   cp src/data/firebaseConfig.example.js src/data/firebaseConfig.local.js
+1. Creá un archivo `.env` en la raíz del proyecto (ignorado por Git) con las variables `VITE_FIREBASE_*`:
+   ```env
+   VITE_FIREBASE_API_KEY=tu_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=tu-proyecto.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=tu-proyecto
+   VITE_FIREBASE_STORAGE_BUCKET=tu-proyecto.firebasestorage.app
+   VITE_FIREBASE_MESSAGING_SENDER_ID=000000000000
+   VITE_FIREBASE_APP_ID=1:000000000000:web:0000000000000000000000
    ```
-2. Completá tus credenciales del proyecto de Firebase en `src/data/firebaseConfig.local.js` (o definí las variables de entorno `FIREBASE_API_KEY`, `FIREBASE_PROJECT_ID`, etc.).
+   *(Como alternativa fuera de Vite, también podés copiar `src/data/firebaseConfig.example.js` a `src/data/firebaseConfig.local.js`).*
+
+2. Uso de `iniciarFirebase()` e `HistorialFirestore`:
+   ```js
+   import { iniciarFirebase } from './src/data/firebaseClient.js';
+   import { HistorialFirestore } from './src/data/historialFirestore.js';
+
+   const { db, uid } = await iniciarFirebase(); // Ejecuta signInAnonymously
+   const repositorioHistorial = new HistorialFirestore({ db, uid });
+   ```
+   - `HistorialFirestore` recibe `{ db, uid }` en su constructor.
+   - Guarda el `uid` en cada partida (`JSON.parse(JSON.stringify(partida))`).
+   - Filtra **todas** las consultas (`obtenerTodas`, `repitioTipoCartaConJuez`) por `uid`.
+   - `limpiar()` borra únicamente las partidas pertenecientes a ese `uid`.
 
 *(Nota: Para correr la simulación de consola con `HistorialMemoria` no hace falta conexión a Firebase).*
 
@@ -69,8 +87,8 @@ node tests/demo-consola.js
   /data          ← Única capa que conoce la persistencia y Firebase
     repositorioHistorial.js        (Interfaz base / contrato RepositorioHistorial)
     historialMemoria.js            (Implementación en memoria para pruebas y consola)
-    historialFirestore.js          (Implementación conectada a Firebase Firestore)
-    firebaseClient.js              (Inicialización del SDK de Firebase y Firestore)
+    historialFirestore.js          (Implementación Firestore filtrada por { db, uid })
+    firebaseClient.js              (Exporta iniciarFirebase() con signInAnonymously y VITE_FIREBASE_*)
     firebaseConfig.example.js      (Plantilla pública de configuración de Firebase)
     firebaseConfig.local.js        (Credenciales reales locales - ignorado en .gitignore)
   /ui                              (Reservado para vistas y controlador web)
@@ -94,7 +112,8 @@ node tests/demo-consola.js
 1. **Aislamiento del Motor (`/src/engine`)**:
    - Escrito 100% en JavaScript puro. No importa ni conoce el DOM, Firebase ni la carpeta `/src/ui`.
 2. **Aislamiento de Datos y Firebase (`/src/data`)**:
-   - Solo `/src/data` conoce al SDK de Firebase (`firebase/app` y `firebase/firestore`).
+   - Solo `/src/data` conoce al SDK de Firebase (`firebase/app`, `firebase/auth` y `firebase/firestore`).
+   - `iniciarFirebase()` autentica anónimamente al jugador (`signInAnonymously`) y entrega `{ db, uid }` a `HistorialFirestore`, aislando las partidas por usuario.
    - El motor interactúa únicamente con el contrato `RepositorioHistorial` mediante **Inyección de Dependencias**, permitiendo alternar entre `HistorialMemoria` e `HistorialFirestore` sin tocar una sola línea del motor.
 3. **Patrón Decorator (`AlegatoBase` + `CartaDecorator`)**:
    - El alegato comienza en `AlegatoBase` con dimensiones `formalidad`, `ironia`, `teatralidad` y `bonusEvidencia`.
@@ -173,4 +192,8 @@ El `puntajeFinal` es **exactamente la suma de las líneas mostradas** en el desg
 4. **Iteración 4 — Conexión con Firebase Firestore, `.gitignore` y Seguridad**:
    - Instalación del SDK de `firebase` vía npm.
    - Implementación de `src/data/firebaseClient.js` y `src/data/historialFirestore.js` respetando que solo `/src/data` conozca a Firebase mientras `/src/engine` permanece intacto.
-   - Separación de credenciales sensibles en `src/data/firebaseConfig.local.js` (excluido junto con `node_modules/` mediante `.gitignore`) y creación de la plantilla `src/data/firebaseConfig.example.js`.
+   - Separación de credenciales sensibles en `.gitignore`.
+5. **Iteración 5 — Autenticación Anónima (`uid`), soporte para Vite y aislamiento por usuario**:
+   - `firebaseClient.js` exporta `iniciarFirebase()`, lee `import.meta.env.VITE_FIREBASE_*`, ejecuta `signInAnonymously` y retorna `{ db, uid }`.
+   - `HistorialFirestore` recibe `{ db, uid }` en el constructor, adjunta `uid` a cada partida, filtra todas las consultas por `uid` y `limpiar()` elimina únicamente las partidas de ese `uid`.
+   - Reemplazo de `structuredClone` por `JSON.parse(JSON.stringify(...))` en `/src/data`.
