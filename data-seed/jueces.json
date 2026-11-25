@@ -1,0 +1,18 @@
+[
+  {
+    "id": "juez-01",
+    "nombre": "Su Señoría Don Rigoberto Formalín",
+    "descripcion": "Amante de los sellos de goma y los formularios por triplicado.",
+    "formalidad": 8,
+    "tolerancia_ironia": 4,
+    "teatralidad": 3
+  },
+  {
+    "id": "juez-02",
+    "nombre": "Magistrada Madame Surrealia",
+    "descripcion": "Juzga según la vibra cósmica del recinto. Si el argumento tiene sentido común, bosteza.",
+    "formalidad": 2,
+    "tolerancia_ironia": 9,
+    "teatralidad": 8
+  }
+]

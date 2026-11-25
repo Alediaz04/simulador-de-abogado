@@ -1,0 +1,21 @@
+{
+  "acusados": [
+    "Un mimo jubilado con hipo crónico",
+    "El presidente del Club de Fans de las cucharas soperas",
+    "Un coleccionista de pelusas umbilicales del siglo XIX"
+  ],
+  "cargos": [
+    "enseñar filosofía existencialista a un cardumen de mojarras sin habilitación municipal",
+    "estacionar un dirigible invisible en doble fila frente a una panadería",
+    "sobornar a un semáforo con cumplidos para que cambie a verde antes de tiempo"
+  ],
+  "contextos": [
+    "durante un eclipse lunar no autorizado por el consorcio",
+    "mientras sonaba un solo de kazoo en re menor",
+    "en presencia de tres gnomos de jardín de porcelana"
+  ],
+  "parametrosBase": [
+    { "gravedad": 4, "absurdo": 7, "evidencia_disponible": 5 },
+    { "gravedad": 8, "absurdo": 9, "evidencia_disponible": 3 }
+  ]
+}

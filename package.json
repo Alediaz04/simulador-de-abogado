@@ -1,0 +1,9 @@
+{
+  "name": "simulador-abogado",
+  "version": "1.0.0",
+  "description": "Simulador de Abogado con motor paramétrico en JS puro (ES Modules)",
+  "type": "module",
+  "scripts": {
+    "demo": "node tests/demo-consola.js"
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ev-01",
+    "tipo": "evidencia",
+    "nombre": "Ticket de estacionamiento en Narnia",
+    "descripcion": "Comprobante sellado por un fauno que demuestra que el acusado no estaba en este plano astral.",
+    "formalidad": 1,
+    "ironia": 3,
+    "teatralidad": 2,
+    "bonusEvidencia": 3
+  },
+  {
+    "id": "ev-02",
+    "tipo": "evidencia",
+    "nombre": "Tupper vacío con olor a misterio",
+    "descripcion": "Recipiente plástico sin tapa que supuestamente contenía la dignidad del demandante.",
+    "formalidad": -1,
+    "ironia": 2,
+    "teatralidad": 1,
+    "bonusEvidencia": 2
+  },
+  {
+    "id": "ley-01",
+    "tipo": "ley",
+    "nombre": "Ley de Gravedad Opcional de 1842",
+    "descripcion": "Inciso 4: Si un objeto cae con suficiente estilo, la culpa recae sobre Isaac Newton.",
+    "formalidad": 4,
+    "ironia": 1,
+    "teatralidad": 1,
+    "bonusEvidencia": 0
+  },
+  {
+    "id": "ley-02",
+    "tipo": "ley",
+    "nombre": "Doctrina del 'Quien se fue a Sevilla'",
+    "descripcion": "Jurisprudencia ancestral que invalida cualquier reclamo tras levantarse de una silla mecedora.",
+    "formalidad": 2,
+    "ironia": 4,
+    "teatralidad": -1,
+    "bonusEvidencia": 1
+  },
+  {
+    "id": "tes-01",
+    "tipo": "testigo",
+    "nombre": "Loro Bilingüe con Amnesia Selectiva",
+    "descripcion": "Solo recuerda los hechos en francés antiguo y exige semillas de girasol antes de responder.",
+    "formalidad": -2,
+    "ironia": 2,
+    "teatralidad": 4,
+    "bonusEvidencia": 0
+  },
+  {
+    "id": "tes-02",
+    "tipo": "testigo",
+    "nombre": "Vecina con Binoculares Infrarrojos",
+    "descripcion": "Vio todo desde el tercer piso mientras regaba un potus artificial a las 3:14 AM.",
+    "formalidad": 2,
+    "ironia": 1,
+    "teatralidad": 3,
+    "bonusEvidencia": 2
+  }
+]
