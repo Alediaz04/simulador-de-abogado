@@ -56,3 +56,9 @@ Ajustá el motor con estos cambios. No agregues nada más.
 
 
 
+Modificá SOLO /src/data. No toques /src/engine.
+1. firebaseClient.js: exportá iniciarFirebase() que haga signInAnonymously y devuelva { db, uid }.
+2. HistorialFirestore recibe { db, uid } en el constructor, guarda uid en cada partida,
+   filtra TODAS las consultas por uid y limpiar() borra solo las partidas de ese uid.
+3. Reemplazá structuredClone por JSON.parse(JSON.stringify(...)).
+4. Preparalo para Vite: leé la config con import.meta.env.VITE_FIREBASE_* y actualizá el README.
