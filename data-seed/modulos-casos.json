@@ -2,20 +2,30 @@
   "acusados": [
     "Un mimo jubilado con hipo crónico",
     "El presidente del Club de Fans de las cucharas soperas",
-    "Un coleccionista de pelusas umbilicales del siglo XIX"
+    "Un coleccionista de pelusas umbilicales del siglo XIX",
+    "Una campeona regional de ajedrez telepático",
+    "El inventor de un paraguas reversible para días soleados"
   ],
   "cargos": [
     "enseñar filosofía existencialista a un cardumen de mojarras sin habilitación municipal",
     "estacionar un dirigible invisible en doble fila frente a una panadería",
-    "sobornar a un semáforo con cumplidos para que cambie a verde antes de tiempo"
+    "sobornar a un semáforo con cumplidos para que cambie a verde antes de tiempo",
+    "plagiar el silbido de una pava eléctrica en concurso público de talentos",
+    "exportar aire de montaña embotellado sin declarar las nubes incluidas"
   ],
   "contextos": [
     "durante un eclipse lunar no autorizado por el consorcio",
     "mientras sonaba un solo de kazoo en re menor",
-    "en presencia de tres gnomos de jardín de porcelana"
+    "en presencia de tres gnomos de jardín de porcelana",
+    "justo cuando el reloj de la plaza marcaba las doce y cuarto de la tarde",
+    "ante la mirada atónita de una convención de carteros"
   ],
   "parametrosBase": [
+    { "gravedad": 2, "absurdo": 5, "evidencia_disponible": 7 },
     { "gravedad": 4, "absurdo": 7, "evidencia_disponible": 5 },
-    { "gravedad": 8, "absurdo": 9, "evidencia_disponible": 3 }
+    { "gravedad": 5, "absurdo": 4, "evidencia_disponible": 6 },
+    { "gravedad": 6, "absurdo": 8, "evidencia_disponible": 4 },
+    { "gravedad": 8, "absurdo": 9, "evidencia_disponible": 3 },
+    { "gravedad": 9, "absurdo": 6, "evidencia_disponible": 4 }
   ]
 }

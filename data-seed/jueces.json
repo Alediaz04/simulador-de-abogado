@@ -14,5 +14,21 @@
     "formalidad": 2,
     "tolerancia_ironia": 9,
     "teatralidad": 8
+  },
+  {
+    "id": "juez-03",
+    "nombre": "Honorable Magistrada Virtudes del Drama",
+    "descripcion": "Exige pasión operística y lágrimas en el estrado; considera cualquier chiste o sarcasmo como desacato personal.",
+    "formalidad": 5,
+    "tolerancia_ironia": 1,
+    "teatralidad": 10
+  },
+  {
+    "id": "juez-04",
+    "nombre": "Juez Cínico Severo Sarcasmo",
+    "descripcion": "Detesta los discursos lacrimógenos y el teatro barato, pero premia el ingenio ácido y las salidas irónicas.",
+    "formalidad": 3,
+    "tolerancia_ironia": 10,
+    "teatralidad": 1
   }
 ]

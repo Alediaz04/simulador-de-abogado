@@ -20,6 +20,26 @@
     "bonusEvidencia": 2
   },
   {
+    "id": "ev-03",
+    "tipo": "evidencia",
+    "nombre": "Acta Notarial Certificada por Búho Real",
+    "descripcion": "Documento lacrado con cera de abeja silvestre que cronometra cada movimiento con rigor milimétrico.",
+    "formalidad": 4,
+    "ironia": -1,
+    "teatralidad": 0,
+    "bonusEvidencia": 3
+  },
+  {
+    "id": "ev-04",
+    "tipo": "evidencia",
+    "nombre": "Grabación de VHS en Cámara Lenta",
+    "descripcion": "Cinta magnética algo gastada donde se distingue una silueta sospechosamente parecida al acusado.",
+    "formalidad": 1,
+    "ironia": 1,
+    "teatralidad": 3,
+    "bonusEvidencia": 2
+  },
+  {
     "id": "ley-01",
     "tipo": "ley",
     "nombre": "Ley de Gravedad Opcional de 1842",
@@ -40,6 +60,26 @@
     "bonusEvidencia": 1
   },
   {
+    "id": "ley-03",
+    "tipo": "ley",
+    "nombre": "Código Procesal de Etiqueta y Protocolo",
+    "descripcion": "Artículo 88: Todo argumento pronunciado con postura erguida y corbata recta adquiere presunción de veracidad.",
+    "formalidad": 5,
+    "ironia": -2,
+    "teatralidad": 1,
+    "bonusEvidencia": 0
+  },
+  {
+    "id": "ley-04",
+    "tipo": "ley",
+    "nombre": "Estatuto del Absurdo Consentido",
+    "descripcion": "Normativa vigente que exime de culpa si el hecho resulta demasiado ridículo para haber sido premeditado.",
+    "formalidad": -1,
+    "ironia": 5,
+    "teatralidad": 2,
+    "bonusEvidencia": 1
+  },
+  {
     "id": "tes-01",
     "tipo": "testigo",
     "nombre": "Loro Bilingüe con Amnesia Selectiva",
@@ -57,6 +97,26 @@
     "formalidad": 2,
     "ironia": 1,
     "teatralidad": 3,
+    "bonusEvidencia": 2
+  },
+  {
+    "id": "tes-03",
+    "tipo": "testigo",
+    "nombre": "Mimo Testigo Presencial",
+    "descripcion": "Reconstruye la escena completa mediante gestos exagerados y una pared invisible en medio de la sala.",
+    "formalidad": -2,
+    "ironia": 3,
+    "teatralidad": 5,
+    "bonusEvidencia": 0
+  },
+  {
+    "id": "tes-04",
+    "tipo": "testigo",
+    "nombre": "Perito en Acústica de Pasillos",
+    "descripcion": "Especialista de traje gris que declara con voz monótona sobre el eco exacto de los pasos en el edificio.",
+    "formalidad": 3,
+    "ironia": -1,
+    "teatralidad": -2,
     "bonusEvidencia": 2
   }
 ]
