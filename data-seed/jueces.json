@@ -20,8 +20,8 @@
     "nombre": "Honorable Magistrada Virtudes del Drama",
     "descripcion": "Exige pasión operística y lágrimas en el estrado; considera cualquier chiste o sarcasmo como desacato personal.",
     "formalidad": 5,
-    "tolerancia_ironia": 1,
-    "teatralidad": 10
+    "tolerancia_ironia": 3,
+    "teatralidad": 9
   },
   {
     "id": "juez-04",
