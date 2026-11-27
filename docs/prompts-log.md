@@ -83,4 +83,23 @@ Ajustá el motor. No agregues nada fuera de esta lista.
 6. `npm run demo`, `npm test` y `npm run balance` deben seguir funcionando. Actualizá las
    pruebas que dependían de la regla vieja.
 
-   
+
+Creá la interfaz web en /src/ui con Vite (JavaScript, HTML y CSS puros, sin frameworks).
+Instalá vite como devDependency y agregá los scripts dev, build y preview.
+Reglas: la interfaz NO calcula nada; usa MotorJuicio, repartirMano, GeneradorCasos y los
+datos de /data-seed (leelos del JSON sin asumir cuántos jueces ni cartas hay). /src/engine
+no se modifica. Nada fuera de esta lista.
+
+Pantallas (en español):
+1. Inicio: título del juego y botón "Comenzar juicio".
+2. Caso y juez: texto del caso, sus parámetros (gravedad, absurdo, evidencia_disponible)
+   y el perfil del juez con sus parámetros. Botón para continuar.
+3. Alegato: mano de 5 cartas. El jugador elige 2 o 3 y ve cómo cambia el alegato
+   (formalidad, ironía, teatralidad, bonus) usando el evento 'cartaJugada' del motor.
+   No se puede confirmar con menos de 2 ni elegir más de 3.
+4. Veredicto: GANADO o PERDIDO, la frase temática, el puntaje y el desglose línea por
+   línea. La penalización por historial debe verse destacada. Botón "Nueva partida".
+
+Persistencia: usá iniciarFirebase() y HistorialFirestore. Si Firebase falla o no está
+configurado, usá HistorialMemoria y mostrá un aviso discreto.
+Sin login, sin menús extra, sin sonidos.

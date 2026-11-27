@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simulador de Abogado</title>
+    <title>Simulador de Abogado — Tribunal Supremo del Absurdo</title>
     <link rel="stylesheet" href="/src/ui/styles.css" />
   </head>
   <body>
@@ -13,10 +13,14 @@
       <!-- Pantalla 1: Inicio -->
       <section id="pantalla-inicio" class="pantalla">
         <div class="tarjeta-central hero">
-          <span class="insignia-tribunal">Tribunal Supremo del Absurdo</span>
+          <div class="ornamento-balanza" aria-hidden="true">⚖️</div>
+          <span class="insignia-tribunal">Excelentísima Corte de Causas Inexplicables</span>
           <h1>Simulador de Abogado</h1>
+          <div class="divisor-solemne" aria-hidden="true">
+            <span>§</span>
+          </div>
           <p class="subtitulo">
-            Defendé causas imposibles ante magistrados implacables jugando tus cartas de evidencia, ley y testigo.
+            Defendé expedientes delirantes ante magistrados de humor cuestionable presentando folios de evidencia, leyes improbables y testigos dudosos.
           </p>
           <button id="btn-comenzar" class="boton-primario" type="button">
             Comenzar juicio
@@ -27,12 +31,16 @@
       <!-- Pantalla 2: Caso y juez -->
       <section id="pantalla-caso-juez" class="pantalla oculto">
         <header class="encabezado-seccion">
+          <span class="sello-encabezado">Apertura de Audiencia</span>
           <h2>Expediente y Magistrado Asignado</h2>
         </header>
 
         <div class="grilla-dos-columnas">
           <article class="panel-expediente">
-            <span class="etiqueta-panel">Caso a defender</span>
+            <div class="membrete-folio">
+              <span class="etiqueta-panel">Folio Judicial — Caso a Defender</span>
+              <span class="sello-confidencial" aria-hidden="true">URGENTE</span>
+            </div>
             <h3 id="caso-titulo"></h3>
             <p id="caso-descripcion" class="texto-destacado"></p>
 
@@ -40,7 +48,10 @@
           </article>
 
           <article class="panel-juez">
-            <span class="etiqueta-panel">Juez del Tribunal</span>
+            <div class="membrete-folio">
+              <span class="etiqueta-panel">Estrado — Juez del Tribunal</span>
+              <span class="sello-confidencial" aria-hidden="true">SU SEÑORÍA</span>
+            </div>
             <h3 id="juez-nombre"></h3>
             <p id="juez-descripcion" class="texto-secundario"></p>
 
@@ -58,22 +69,23 @@
       <!-- Pantalla 3: Alegato -->
       <section id="pantalla-alegato" class="pantalla oculto">
         <header class="encabezado-seccion">
+          <span class="sello-encabezado">Mesa de la Defensa</span>
           <h2>Construcción del Alegato</h2>
           <p id="instruccion-cartas" class="texto-secundario"></p>
         </header>
 
         <div class="resumen-contexto-alegato">
           <div class="chip-contexto">
-            <strong>Caso:</strong> <span id="resumen-caso-titulo"></span>
+            <strong>Expediente:</strong> <span id="resumen-caso-titulo"></span>
           </div>
           <div class="chip-contexto">
-            <strong>Juez:</strong> <span id="resumen-juez-nombre"></span>
+            <strong>Preside:</strong> <span id="resumen-juez-nombre"></span>
           </div>
         </div>
 
         <section class="panel-estado-alegato" aria-live="polite">
           <div class="cabecera-estado-alegato">
-            <h3>Estado del Alegato</h3>
+            <h3>Tono Actual del Alegato</h3>
             <span id="contador-cartas-jugadas" class="insignia-contador"></span>
           </div>
           <div class="grilla-atributos-alegato">
@@ -114,7 +126,7 @@
       <!-- Pantalla 4: Veredicto -->
       <section id="pantalla-veredicto" class="pantalla oculto">
         <div class="tarjeta-veredicto">
-          <span class="etiqueta-panel">Fallo del Tribunal</span>
+          <span class="etiqueta-panel">Acta de Sentencia Definitiva</span>
           <h2 id="veredicto-resultado" class="sello-resultado"></h2>
           <p id="veredicto-frase" class="frase-tematica"></p>
 
@@ -124,13 +136,13 @@
               <strong id="veredicto-puntaje"></strong>
             </div>
             <div class="bloque-puntaje">
-              <span>Umbral requerido</span>
+              <span>Umbral Requerido</span>
               <strong id="veredicto-umbral"></strong>
             </div>
           </div>
 
           <section class="seccion-desglose">
-            <h3>Desglose línea por línea</h3>
+            <h3>Desglose Oficial del Fallo (Línea por Línea)</h3>
             <ul id="lista-desglose" class="lista-desglose"></ul>
           </section>
 
