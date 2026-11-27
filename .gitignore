@@ -1,5 +1,6 @@
-# Dependencias pesadas
+# Dependencias pesadas y salida de build
 node_modules/
+dist/
 
 # Claves, variables de entorno y configuraciones sensibles (Firebase, etc.)
 .env

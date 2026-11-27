@@ -1,3 +1,4 @@
+import { MIN_CARTAS, MAX_CARTAS } from '../config/juego.js';
 import { AlegatoBase } from './alegato.js';
 import { decorarAlegatoConCarta } from './cartas/index.js';
 import { EmisorEventos } from './eventos.js';
@@ -69,8 +70,8 @@ export class MotorJuicio {
     if (!this.alegatoActual || !this.juezActual) {
       throw new Error('Debe iniciar un juicio antes de jugar una carta.');
     }
-    if (this.cartasJugadas.length >= 3) {
-      throw new Error('Solo se pueden jugar entre 2 y 3 cartas por juicio.');
+    if (this.cartasJugadas.length >= MAX_CARTAS) {
+      throw new Error(`Solo se pueden jugar entre ${MIN_CARTAS} y ${MAX_CARTAS} cartas por juicio.`);
     }
 
     this.alegatoActual = decorarAlegatoConCarta(this.alegatoActual, carta);
@@ -95,9 +96,9 @@ export class MotorJuicio {
     if (!this.alegatoActual || !this.juezActual || !this.casoActual) {
       throw new Error('No hay un juicio activo para dictar veredicto.');
     }
-    if (this.cartasJugadas.length < 2 || this.cartasJugadas.length > 3) {
+    if (this.cartasJugadas.length < MIN_CARTAS || this.cartasJugadas.length > MAX_CARTAS) {
       throw new Error(
-        `El alegato requiere entre 2 y 3 cartas jugadas (actual: ${this.cartasJugadas.length}).`
+        `El alegato requiere entre ${MIN_CARTAS} y ${MAX_CARTAS} cartas jugadas (actual: ${this.cartasJugadas.length}).`
       );
     }
 

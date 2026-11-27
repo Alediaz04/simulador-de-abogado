@@ -26,7 +26,7 @@ export class GeneradorCasos {
     const idxAcusado = indices.acusado ?? Math.floor(Math.random() * acusados.length);
     const idxCargo = indices.cargo ?? Math.floor(Math.random() * cargos.length);
     const idxContexto = indices.contexto ?? Math.floor(Math.random() * contextos.length);
-    const idxParams = indices.parametros ?? 0;
+    const idxParams = indices.parametros ?? Math.floor(Math.random() * parametrosBase.length);
 
     const acusado = acusados[idxAcusado];
     const cargo = cargos[idxCargo];

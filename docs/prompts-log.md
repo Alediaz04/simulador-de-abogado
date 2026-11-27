@@ -62,3 +62,25 @@ Modificá SOLO /src/data. No toques /src/engine.
    filtra TODAS las consultas por uid y limpiar() borra solo las partidas de ese uid.
 3. Reemplazá structuredClone por JSON.parse(JSON.stringify(...)).
 4. Preparalo para Vite: leé la config con import.meta.env.VITE_FIREBASE_* y actualizá el README.
+
+
+26/11/26
+
+Prompts:
+Ajustá el motor. No agregues nada fuera de esta lista.
+
+1. Creá /src/config/juego.js con TAMANO_MANO = 5, MIN_CARTAS = 2 y MAX_CARTAS = 3.
+   motor.js debe usar esos valores en vez de números escritos adentro.
+2. Creá /src/engine/mano/repartirMano.js con repartirMano(cartas, tamano): devuelve
+   `tamano` cartas distintas al azar del catálogo. Si hay menos cartas que `tamano`,
+   devuelve todas. Sin lógica de interfaz.
+3. GeneradorCasos.generarCaso: si no se indica el conjunto de parámetros, elegilo al azar
+   entre parametrosBase (hoy usa siempre el primero).
+4. HistorialMemoria y HistorialFirestore: repitioTipoCartaConJuez debe mirar SOLO las
+   partidas anteriores con ese juez. Eliminá la comparación de tipos repetidos dentro de
+   la misma mano.
+5. Mantené Decorator, Strategy, Observer, DI, el desglose exacto y el clamp.
+6. `npm run demo`, `npm test` y `npm run balance` deben seguir funcionando. Actualizá las
+   pruebas que dependían de la regla vieja.
+
+   

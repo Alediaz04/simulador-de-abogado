@@ -55,7 +55,8 @@ export class HistorialFirestore extends RepositorioHistorial {
   }
 
   /**
-   * Verifica en Firestore (filtrando por uid y juezId) si el jugador repitió un tipo de carta con ese juez.
+   * Verifica en Firestore (filtrando por uid y juezId) si el jugador repitió un tipo de carta
+   * en partidas anteriores frente al mismo juez.
    * @param {string} juezId
    * @param {Array<string>} tiposCartasJugadas
    * @returns {Promise<boolean>}
@@ -73,13 +74,7 @@ export class HistorialFirestore extends RepositorioHistorial {
       partidasConEsteJuez.flatMap((p) => (p.cartas ?? []).map((c) => c.tipo))
     );
 
-    const repitioContraHistorialPrevio = tiposCartasJugadas.some((tipo) =>
-      tiposUsadosPreviamente.has(tipo)
-    );
-
-    const repitioEnMismaMano = new Set(tiposCartasJugadas).size < tiposCartasJugadas.length;
-
-    return repitioContraHistorialPrevio || repitioEnMismaMano;
+    return tiposCartasJugadas.some((tipo) => tiposUsadosPreviamente.has(tipo));
   }
 
   /**

@@ -4,11 +4,17 @@
   "description": "Simulador de Abogado con motor paramétrico en JS puro (ES Modules)",
   "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "demo": "node tests/demo-consola.js",
     "test": "node --test",
     "balance": "node tests/balance.js"
   },
   "dependencies": {
     "firebase": "^13.4.0"
+  },
+  "devDependencies": {
+    "vite": "^8.4.0"
   }
 }

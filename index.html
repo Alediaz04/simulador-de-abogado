@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador de Abogado</title>
+    <link rel="stylesheet" href="/src/ui/styles.css" />
+  </head>
+  <body>
+    <div id="aviso-persistencia" class="aviso-persistencia oculto" role="status"></div>
+
+    <main class="contenedor-principal">
+      <!-- Pantalla 1: Inicio -->
+      <section id="pantalla-inicio" class="pantalla">
+        <div class="tarjeta-central hero">
+          <span class="insignia-tribunal">Tribunal Supremo del Absurdo</span>
+          <h1>Simulador de Abogado</h1>
+          <p class="subtitulo">
+            Defendé causas imposibles ante magistrados implacables jugando tus cartas de evidencia, ley y testigo.
+          </p>
+          <button id="btn-comenzar" class="boton-primario" type="button">
+            Comenzar juicio
+          </button>
+        </div>
+      </section>
+
+      <!-- Pantalla 2: Caso y juez -->
+      <section id="pantalla-caso-juez" class="pantalla oculto">
+        <header class="encabezado-seccion">
+          <h2>Expediente y Magistrado Asignado</h2>
+        </header>
+
+        <div class="grilla-dos-columnas">
+          <article class="panel-expediente">
+            <span class="etiqueta-panel">Caso a defender</span>
+            <h3 id="caso-titulo"></h3>
+            <p id="caso-descripcion" class="texto-destacado"></p>
+
+            <div class="lista-parametros" id="caso-parametros"></div>
+          </article>
+
+          <article class="panel-juez">
+            <span class="etiqueta-panel">Juez del Tribunal</span>
+            <h3 id="juez-nombre"></h3>
+            <p id="juez-descripcion" class="texto-secundario"></p>
+
+            <div class="lista-parametros" id="juez-parametros"></div>
+          </article>
+        </div>
+
+        <div class="acciones-pantalla">
+          <button id="btn-ir-alegato" class="boton-primario" type="button">
+            Continuar al alegato
+          </button>
+        </div>
+      </section>
+
+      <!-- Pantalla 3: Alegato -->
+      <section id="pantalla-alegato" class="pantalla oculto">
+        <header class="encabezado-seccion">
+          <h2>Construcción del Alegato</h2>
+          <p id="instruccion-cartas" class="texto-secundario"></p>
+        </header>
+
+        <div class="resumen-contexto-alegato">
+          <div class="chip-contexto">
+            <strong>Caso:</strong> <span id="resumen-caso-titulo"></span>
+          </div>
+          <div class="chip-contexto">
+            <strong>Juez:</strong> <span id="resumen-juez-nombre"></span>
+          </div>
+        </div>
+
+        <section class="panel-estado-alegato" aria-live="polite">
+          <div class="cabecera-estado-alegato">
+            <h3>Estado del Alegato</h3>
+            <span id="contador-cartas-jugadas" class="insignia-contador"></span>
+          </div>
+          <div class="grilla-atributos-alegato">
+            <div class="indicador-alegato">
+              <span class="nombre-indicador">Formalidad</span>
+              <strong id="alegato-formalidad" class="valor-indicador">0</strong>
+              <span class="rango-indicador">/ 10</span>
+            </div>
+            <div class="indicador-alegato">
+              <span class="nombre-indicador">Ironía</span>
+              <strong id="alegato-ironia" class="valor-indicador">0</strong>
+              <span class="rango-indicador">/ 10</span>
+            </div>
+            <div class="indicador-alegato">
+              <span class="nombre-indicador">Teatralidad</span>
+              <strong id="alegato-teatralidad" class="valor-indicador">0</strong>
+              <span class="rango-indicador">/ 10</span>
+            </div>
+            <div class="indicador-alegato bonus">
+              <span class="nombre-indicador">Bonus de Evidencia</span>
+              <strong id="alegato-bonus" class="valor-indicador">+0</strong>
+            </div>
+          </div>
+        </section>
+
+        <div id="contenedor-mano" class="grilla-mano"></div>
+
+        <div class="acciones-pantalla">
+          <button id="btn-reiniciar-alegato" class="boton-secundario" type="button">
+            Reiniciar selección
+          </button>
+          <button id="btn-dictar-veredicto" class="boton-primario" type="button" disabled>
+            Presentar alegato y escuchar veredicto
+          </button>
+        </div>
+      </section>
+
+      <!-- Pantalla 4: Veredicto -->
+      <section id="pantalla-veredicto" class="pantalla oculto">
+        <div class="tarjeta-veredicto">
+          <span class="etiqueta-panel">Fallo del Tribunal</span>
+          <h2 id="veredicto-resultado" class="sello-resultado"></h2>
+          <p id="veredicto-frase" class="frase-tematica"></p>
+
+          <div class="resumen-puntaje">
+            <div class="bloque-puntaje">
+              <span>Puntaje Final</span>
+              <strong id="veredicto-puntaje"></strong>
+            </div>
+            <div class="bloque-puntaje">
+              <span>Umbral requerido</span>
+              <strong id="veredicto-umbral"></strong>
+            </div>
+          </div>
+
+          <section class="seccion-desglose">
+            <h3>Desglose línea por línea</h3>
+            <ul id="lista-desglose" class="lista-desglose"></ul>
+          </section>
+
+          <div class="acciones-pantalla">
+            <button id="btn-nueva-partida" class="boton-primario" type="button">
+              Nueva partida
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/ui/main.js"></script>
+  </body>
+</html>

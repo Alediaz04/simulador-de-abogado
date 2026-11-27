@@ -7,9 +7,11 @@ import { readFileSync } from 'node:fs';
 import { MotorJuicio } from '../src/engine/motor.js';
 import { EstrategiaParametrica } from '../src/engine/veredicto/EstrategiaVeredicto.js';
 import { PerfilJuez } from '../src/engine/jueces/PerfilJuez.js';
+import { repartirMano } from '../src/engine/mano/repartirMano.js';
 import { HistorialMemoria } from '../src/data/historialMemoria.js';
 import { PESOS_VEREDICTO } from '../src/config/pesos.js';
 import { UMBRAL_VEREDICTO } from '../src/config/umbral.js';
+import { TAMANO_MANO } from '../src/config/juego.js';
 
 // --- Datos de prueba (se leen de data-seed) ---
 const leerJson = (ruta) => JSON.parse(readFileSync(new URL(ruta, import.meta.url), 'utf-8'));
@@ -90,15 +92,15 @@ test('un tipo de carta desconocido da error', () => {
   assert.throws(() => motor.jugarCarta({ id: 'raro', tipo: 'inventada', nombre: 'Rara' }));
 });
 
-// --- 5. Memoria del juez (criterio de aceptación) ---
-test('la primera partida con un juez NO tiene penalización por historial (manos sin repetir tipo)', async () => {
-  const mano = [cartaDeTipo('evidencia'), cartaDeTipo('ley'), cartaDeTipo('testigo')];
+// --- 5. Memoria del juez (criterio de aceptación: mira SOLO partidas anteriores con ese juez) ---
+test('la primera partida con un juez NO tiene penalización por historial (incluso si repite tipo en la misma mano)', async () => {
+  const mano = [cartaDeTipo('evidencia', 0), cartaDeTipo('evidencia', 1)];
   const { veredicto } = await jugar(crearMotor(), CASO, JUEZ, mano);
   const hay = veredicto.lineasDesglose.some((l) => l.termino === 'penalización por historial');
   assert.equal(hay, false);
 });
 
-test('repetir tipo de carta con el mismo juez agrega la penalización por historial', async () => {
+test('repetir tipo de carta en una partida posterior con el mismo juez agrega la penalización por historial', async () => {
   const motor = crearMotor();
   await jugar(motor, CASO, JUEZ, [cartaDeTipo('evidencia', 0), cartaDeTipo('ley', 0)]);
   const { veredicto } = await jugar(motor, CASO, JUEZ, [cartaDeTipo('evidencia', 1), cartaDeTipo('ley', 1)]);
@@ -136,4 +138,14 @@ test('el motor emite cartaJugada y veredictoListo', async () => {
   motor.on('veredictoListo', () => vistos.push('veredictoListo'));
   await jugar(motor, CASO, JUEZ, [cartaDeTipo('evidencia'), cartaDeTipo('ley')]);
   assert.deepEqual(vistos, ['cartaJugada', 'cartaJugada', 'veredictoListo']);
+});
+
+// --- 8. Repartir mano ---
+test('repartirMano devuelve cartas distintas y todas si hay menos que tamano', () => {
+  const mano = repartirMano(CARTAS, TAMANO_MANO);
+  assert.equal(mano.length, TAMANO_MANO);
+  assert.equal(new Set(mano.map((c) => c.id)).size, TAMANO_MANO);
+
+  const todas = repartirMano(CARTAS, CARTAS.length + 10);
+  assert.equal(todas.length, CARTAS.length);
 });
